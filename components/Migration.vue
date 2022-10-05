@@ -83,7 +83,7 @@ export default {
       const gasPrice = new BN('200000000')
       let contract
       if (process.browser) {
-        contract = window.zilPay.contracts.at(environment.getContractAddress('ZRC1_CONTRACT')) 
+        contract = window.zilPay.contracts.at(environment.getContractAddress('zrc1_contract')) 
       }
 
  
