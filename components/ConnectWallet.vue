@@ -24,7 +24,7 @@ export default {
     },
     network () {
       if (process.browser) {
-        return process.env.zilliqa_network
+        return process.env.current_network
       }
     }
   },

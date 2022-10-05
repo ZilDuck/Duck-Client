@@ -54,7 +54,7 @@ export async function getDuckHolders () {
 
 export async function getHeldZRC1Tokens () {
     const result = (await zilliqa.blockchain.getSmartContractSubState(
-        environment.getContractAddress('ZRC1_CONTRACT'),
+        environment.getContractAddress('zrc1_contract'),
         "token_owners"
     ))
 
@@ -64,7 +64,7 @@ export async function getHeldZRC1Tokens () {
 
 export async function getZRC1Operators () {
     const result = (await zilliqa.blockchain.getSmartContractSubState(
-        environment.getContractAddress('ZRC1_CONTRACT'),
+        environment.getContractAddress('zrc1_contract'),
         "operator_approvals"
     ))
 
