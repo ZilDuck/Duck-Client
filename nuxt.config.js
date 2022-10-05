@@ -1,45 +1,31 @@
 
 export function getApiUrl () {
-  const network = process.env.zilliqa_network
+  const network = process.env.current_network
   switch (network) {
     case 'testnet': {
-      return process.env.testnet_api_url 
+      return 'https://dev-api.zilliqa.com'
     }
     case 'mainnet': {
-      return process.env.mainnet_api_url
+      return 'https://api.zilliqa.com'
     }
-    default: throw new Error('Invalid network')
+    default: return 'https://api.zilliqa.com'
   }
 }
 
-
-
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  //target: 'static',
+  // target: 'static',
   ssr: true,
   env: {
-    zilliqa_network: process.env.zilliqa_network,
-
-    //mainnet
-    mainnet_token_contract: process.env.mainnet_token_contract,
-    mainnet_proxy_contract: process.env.mainnet_proxy_contract,
-    mainnet_zrc1_contract: process.env.mainnet_zrc1_contract,
-    mainnet_zrc6_contract: process.env.mainnet_zrc6_contract,
-    mainnet_migrator_contract: process.env.mainnet_migrator_contract,
-    mainnet_rewards_contract: process.env.mainnet_rewards_contract,
-    mainnet_api_url: process.env.mainnet_api_url,
-    mainnet_voucher_contract: process.env.mainnet_voucher_contract,
-    mainnet_ownership_contract: process.env.mainnet_ownership_contract,
-
-    //testnet
-    testnet_token_contract: process.env.testnet_token_contract,
-    testnet_proxy_contract: process.env.testnet_proxy_contract,
-    testnet_zrc1_contract: process.env.testnet_zrc1_contract,
-    testnet_zrc6_contract: process.env.testnet_zrc6_contract,
-    tesntet_migrator_contract : process.env.tesntet_migrator_contract ,
-    testnet_rewards_contract : process.env.testnet_rewards_contract ,
-    testnet_api_url : process.env.testnet_api_url ,
+    current_network: process.env.current_network,
+    token_contract: process.env.token_contract,
+    proxy_contract: process.env.proxy_contract,
+    zrc1_contract: process.env.zrc1_contract,
+    zrc6_contract: process.env.zrc6_contract,
+    migrator_contract: process.env.migrator_contract,
+    rewards_contract: process.env.rewards_contract,
+    voucher_contract: process.env.voucher_contract,
+    ownership_contract: process.env.ownership_contract
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -56,15 +42,15 @@ export default {
         name: 'description',
         content: 'Home of the Non Fungible Ducks as well as all projects by the Duck team.'
       },
-      { 
-        hid: 'og:image', 
-        property: 'og:image', 
+      {
+        hid: 'og:image',
+        property: 'og:image',
         content: '/meta-preview.png'
       }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap", }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap' }
     ]
   },
 
@@ -85,7 +71,7 @@ export default {
     // https://go.nuxtjs.dev/eslint
     // '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss' 
+    '@nuxtjs/tailwindcss'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -101,7 +87,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    extend(config) {
+    extend (config) {
       config.node = {
         fs: 'empty'
       }
