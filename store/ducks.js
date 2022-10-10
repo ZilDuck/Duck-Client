@@ -61,11 +61,11 @@ export const mutations = {
 
 export const actions = {
   async fetchDucks (context, params) {
-    const result = await this.$axios.$get('/ducks', { params })
+    const result = await this.$axios.$get('https://api.duck.community/ducks', { params })
     context.commit('SET_DUCKS', result.resultDucks)
   },
   async getAttributeCounts (context) {
-    const result = await this.$axios.$get('/attributes')
+    const result = await this.$axios.$get('https://api.duck.community/attributes')
     context.commit('SET_ATTRIBUTE_COUNTS', result)
   },
 
@@ -83,7 +83,7 @@ export const actions = {
     const subscriber = zilliqa.subscriptionBuilder.buildNewBlockSubscriptions(
       environment.getRpcUrl('ws'),
     )
-        
+
     subscriber.emitter.on(MessageType.NEW_BLOCK, () => {
       dispatch('fetchZRC6Owners')
       dispatch('fetchTokenOwners')
@@ -93,7 +93,7 @@ export const actions = {
       dispatch('fetchVoucherOwners')
       dispatch('fetchVoucherState')
     })
-    
+
     await subscriber.start()
   },
 
@@ -101,7 +101,7 @@ export const actions = {
   async fetchZRC6Owners ({ commit }) {
     const tokenUrisArr = await ZilMiddleware.getDuckHolders()
     console.log(`fetched ${tokenUrisArr.length} ducks`)
-    commit('SET_DUCK_OWNERS', tokenUrisArr)  
+    commit('SET_DUCK_OWNERS', tokenUrisArr)
     commit('SET_CURRENT_DUCK', tokenUrisArr.length)
   },
 
@@ -125,7 +125,7 @@ export const actions = {
   // duck fungible LP rewards
   async fetchUserRewards ({commit}) {
     const rewards = await ZilMiddleware.fetchUserRewardsState()
-    commit('SET_USER_REWARDS_STATE',rewards) 
+    commit('SET_USER_REWARDS_STATE',rewards)
   },
 
   // non fungible voucher token
