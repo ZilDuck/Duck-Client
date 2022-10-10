@@ -8,7 +8,7 @@ export function getApiUrl () {
     case 'mainnet': {
       return 'https://api.zilliqa.com'
     }
-    default: return 'https://api.zilliqa.com'
+    default: throw new Error('Invalid network')
   }
 }
 
