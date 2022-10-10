@@ -9,7 +9,7 @@ env:
   voucher_contract: "0xffe86530c8cf9e92751c6cbcd1ff8af12e778805" 
   ownership_contract: "0x35eea03bb8e9dc7e1f22c12c8a1007ea968e5bd8"
 
-namespace: duck
+namespace: duck-mainnet
 
 image:
   app:
