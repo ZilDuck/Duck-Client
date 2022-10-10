@@ -5,6 +5,9 @@ export function getApiUrl () {
     case 'testnet': {
       return 'https://dev-api.zilliqa.com'
     }
+    case 'mainnet': {
+      return 'https://api.zilliqa.com'
+    }
     default: return 'https://api.zilliqa.com'
   }
 }
